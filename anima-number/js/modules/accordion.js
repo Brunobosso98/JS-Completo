@@ -2,7 +2,6 @@ export default function initAccordion() {
   const accordionList = document.querySelectorAll(
     "[data-anime='accordion'] dt"
   );
-  console.log(accordionList);
   const activeClass = "ativo";
   if (accordionList.length) {
     accordionList[0].classList.add(activeClass);
