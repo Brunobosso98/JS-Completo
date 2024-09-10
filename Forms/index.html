@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms</title>
+</head>
+
+<body>
+  <style>
+    label {
+      display: block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      margin-bottom: .5rem;
+      margin-top: 1rem;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    input[type='text'],
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: .5rem;
+      border: 2px solid black;
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+
+    textarea {
+      height: 150px;
+    }
+
+    .invalido {
+      border-color: red;
+    }
+  </style>
+  <form name="contato" id="contato">
+    <label for="nome">Nome</label>
+    <input type="text" name="nome" id="nome" required>
+    <span class="erro"></span>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required>
+    <span class="erro"></span>
+    <label for="mensagem">Mensagem</label>
+    <textarea name="textarea" id="textarea"></textarea>
+    <select name="cores" id="cores">
+      <option value="blue">Azul</option>
+      <option value="red">Vermelho</option>
+    </select>
+    <input type="color">
+    <input type="date">
+    <input type="number">
+    <input type="range">
+    <input type="password">
+    <label for="identidade">Possui identidade fera?</label>
+    <input type="checkbox" value="identidade" id="identidade">
+    <!-- Sò um pode ser selecionado -->
+    <input type="radio" value="testando" id="testando" name="testando">
+    <input type="radio" value="testando2" id="testando2" name="testando">
+  </form>
+  <span class="teste"></span>
+
+  <script>
+    const contato = document.querySelector('#contato')
+    const teste = document.querySelector('.teste')
+    //console.log(contato.elements.nome)
+    //console.log(document.forms)
+
+    // FUNÇÃO QUE MUDA FUNDO DO SITE
+    // function handleKeyUp(event) {
+    //   if (event.target.checked) {
+    //     console.log(event.target.value)
+    //   }
+    //   document.body.style.backgroundColor = event.target.value;
+    // }
+
+    // FUNÇÃO QUE LÊ O QUE O USUÁRIO ESCREVEU
+    // function handleKeyUp(event) {
+    //   const target = event.target
+
+    //   if (!target.checkValidity()) {
+    //     target.classList.add('invalido')
+    //     contato.nome.setCustomValidity('Campo mó importante')
+    //     target.nextElementSibling.innerText = target.validationMessage;
+    //   }
+
+    //   //console.log(target.value)
+    //   teste.innerText = target.value;
+    // }
+
+    const dados = {};
+    function handleKeyUp(event) {
+      dados[event.target.name] = event.target.value
+    }
+
+    contato.addEventListener('change', handleKeyUp)
+
+  </script>
+</body>
+
+</html>
