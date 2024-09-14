@@ -54,3 +54,49 @@ sobre
     document.querySelector("h1").innerText = titulo.innerText;
     console.log(titulo);
   });
+
+// BLOB()
+
+const imagem = fetch("./imagem.png");
+
+imagem
+  .then((r) => r.blob())
+  .then((body) => {
+    const blobUrl = URL.createObjectURL(body);
+    const imagemDom = document.querySelector("img");
+    imagemDom.src = blobUrl;
+  });
+
+// CLONE
+
+const div1 = document.createElement("div");
+
+fetch("https://viacep.com.br/ws/01001000/json/").then((response) => {
+  const cloneResponse = response.clone();
+  response.json().then((json) => {
+    console.log(json);
+  });
+  cloneResponse.text().then((text) => {
+    console.log(text);
+  });
+});
+
+// HEADERS, É um tipo de dado iterável então podemos utilizar o forEach para vermos cada um deles.
+const div2 = document.createElement("div");
+
+fetch("https://viacep.com.br/ws/01001000/json/").then((response) => {
+  response.headers.forEach(console.log);
+});
+
+//URL e TYPE
+const div3 = document.createElement("div");
+
+fetch("https://viacep.com.br/ws/01001000/json/").then((response) => {
+  console.log(response.type, response.url);
+});
+
+//types
+// basic: feito na mesma origem
+// cors: feito em url body pode estar disponível
+// error: erro de conexão
+// opaque: no-cors, não permite acesso de outros sites
