@@ -14,7 +14,7 @@ export default function initTabNav() {
     }
 
     tabMenu.forEach((itemMenu, index) => {
-      itemMenu.addEventListener("click", () => {
+      itemMenu.addEventListener("click", function () {
         activeTab(index);
       });
     });
