@@ -200,3 +200,92 @@ const regexp22 = /java|php/gi;
 
 "PHP e Java são linguagens diferentes".replace(regexp, "X");
 // X e X são linguagens diferente
+
+// Word Boundary \b
+// O sinal \b irá indicar que pretendemos fazer uma seleção que deve ter início e fim de não caracteres \w.
+// Procura: java (case insensitive)
+const regexp24 = /java/gi;
+"Java não é JavaScript.".replace(regexp, "X");
+// X não é XScript.
+
+// Procura: java (case insensitive)
+const regexpBoundary = /\bjava\b/gi;
+"Java não é JavaScript.".replace(regexpBoundary, "X");
+// X não é JavaScript.
+
+// Procura: Dígitos em sequência, que estejam isolados
+const regexpDigito1 = /\b\d+\b/gi;
+"O Restaurante25 na Rua 3, custa R$ 32,00".replace(regexDigito, "X");
+// O Restaurante25 na Rua X, custa R$ X,X
+
+"11_22 33-44 55é66 77e88".replace(regexpDigito, "X");
+// 11_22 X-X XéX 77e88
+
+// Not Word Boundary \B
+// É o contrário do \b.
+const regexpDigito = /\B\d+\B/gi;
+
+"11_22 33-44 55é66 77e88".replace(regexpDigito, "X");
+// 1X_X2 33-44 55é66 7XeX8
+
+// Anchor Beginning
+// Com o ^ é possível informar que a busca deve ser iniciada no início da linha.
+// Procura: sequência de alfanuméricos
+// no início da linha.
+const regexp23 = /^\w+/g;
+
+`andre@origamid.com
+contato@origamid.com`.replace(regexp, "X");
+// X@origamid.com
+// contato@origamid.com
+
+// Anchor End
+// Com o $ é possível informar que a busca deve ser iniciada no final da linha.
+// Procura: sequência de alfanuméricos
+// no final da linha.
+const regexp25 = /\w+$/g;
+
+`andre@origamid.com
+contato@origamid.com`.replace(regexp, "X");
+// andre@origamid.com
+// contato@origamid.X
+
+// Flag: m
+// Com a flag m de multiline, podemos informar que a busca de início ^ e final $ de linha devem ocorrer em todas as linhas disponíveis.
+// Procura: sequência de alfanuméricos
+// no final da linha.
+const regexp26 = /\w+$/gm;
+
+`andre@origamid.com
+contato@origamid.com`.replace(regexp, "X");
+// andre@origamid.X
+// contato@origamid.X
+
+// Procura: sequência de alfanuméricos
+// no início da linha.
+const regexp27 = /^\w+/gm;
+
+`andre@origamid.com
+contato@origamid.com`.replace(regexp, "X");
+// X@origamid.com
+// X@origamid.com
+
+// Line Feed \n
+// O \n irá selecionar o final de uma linha, quando criamos uma nova.
+const regexp28 = /\n/g;
+
+`andre@origamid.com\ncontato@origamid.com`.replace(regexp, "---");
+// andre@origamid.com---contato@origamid.com
+
+`andre@origamid.com
+contato@origamid.com`.replace(regexp, "X");
+// andre@origamid.com---contato@origamid.com
+
+// \t seleciona tabs
+// Unicode \u
+// O \u irá selecionar o respectivo caracter unicode, de acordo com o código passado em \uXXXX. Ex: \u0040 seleciona o @.
+// Procura: @ ou ©
+const regexp29 = /\u0040|\u00A9/g;
+
+"andre@origamid.com ©".replace(regexp, "---");
+// andre---origamid.com ---
