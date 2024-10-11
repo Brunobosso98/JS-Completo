@@ -21,3 +21,10 @@ initMenuMobile();
 initFuncionamento();
 initFetchAnimais();
 initFetchBtc();
+
+import $ from "jquery";
+import _ from "lodash";
+
+// $("nav").hide();
+// const diferenca = _.difference(["Banana", "Uva"], ["Banana", "Morango"]);
+// console.log(diferenca);
