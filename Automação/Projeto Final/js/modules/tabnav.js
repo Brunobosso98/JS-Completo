@@ -1,7 +1,5 @@
 export default function initTabNav() {
-  // Seleciona as imagens
   const tabMenu = document.querySelectorAll('[data-tab="menu"] li');
-  // Seleciona os textos
   const tabContent = document.querySelectorAll('[data-tab="content"] section');
 
   if (tabMenu.length && tabContent.length) {
